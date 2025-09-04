@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Font Definitions (keep as is) */
+@font-face {
+  font-family: font1;
+  src: url(../public/fonts/Lausanne-300.woff2);
+}
+@font-face {
+  font-family: font2;
+  src: url(../public/fonts/Lausanne-500.woff2);
+}
+
+/* Marquee Animation:
+  - The .marquee container clips the content.
+  - The .marquee__content is the scrolling element.
+  - We use CSS variables for easy customization.
+*/
+.marquee {
+  --gap: 1rem; /* Defines the space between duplicated content */
+  --duration: 10s; /* Controls animation speed */
+
+  display: flex;
+  overflow: hidden;
+  gap: var(--gap);
+}
+
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+/* General Link Reveal (using Tailwind's 'group' utility):
+  - No extra CSS needed for the hover effect itself.
+  - We will apply Tailwind classes directly in the HTML.
+*/
